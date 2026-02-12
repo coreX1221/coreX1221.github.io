@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request data deletion for MARK - Voice-Enabled Expense Tracker">
+    <meta name="keywords" content="MARK, data deletion, delete account, DPDP Act, right to erasure">
+    <meta name="author" content="Chinmoy Dutta">
+    <title>Data Deletion Request - MARK</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group .help-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-group {
+            margin: 1.5rem 0;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: #dc2626;
+            color: white;
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #b91c1c;
+        }
+
+        .submit-btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .warning-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box h3 {
+            color: #92400e;
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .warning-box ul {
+            margin-bottom: 0;
+        }
+
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .success-message {
+            background-color: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .alternative-methods {
+            background-color: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .submit-btn {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms of Service</a> |
+        <a href="delete-data.html">Delete My Data</a>
+    </nav>
+    
+    <main>
+        <header>
+            <h1>Data Deletion Request</h1>
+            <p class="app-name"><strong>MARK</strong> (Money App Re-invented, Kinda)</p>
+            <p class="effective-date">Exercise your right to erasure under DPDP Act 2023</p>
+        </header>
+
+        <section>
+            <h2>Request Account & Data Deletion</h2>
+            <p>Under India's Digital Personal Data Protection Act (DPDP Act), 2023, you have the <strong>Right to Erasure</strong>. This means you can request permanent deletion of your account and all associated personal data.</p>
+
+            <div class="warning-box">
+                <h3>⚠️ Important: This Action is Irreversible</h3>
+                <p><strong>Deleting your data will permanently remove:</strong></p>
+                <ul>
+                    <li>Your MARK account (Firebase Authentication)</li>
+                    <li>All expense and income transactions</li>
+                    <li>Categories, budgets, and recurring transactions</li>
+                    <li>Debt tracking records (borrowed/lent)</li>
+                    <li>Google Drive backup files (if enabled)</li>
+                    <li>Push notification tokens</li>
+                    <li>All analytics and ML classification data</li>
+                </ul>
+                <p><strong>This data cannot be recovered after deletion.</strong></p>
+            </div>
+
+            <div class="info-box">
+                <p><strong>💡 Alternative: Delete from App</strong></p>
+                <p>You can delete your account directly from the MARK app:</p>
+                <ol>
+                    <li>Open MARK app</li>
+                    <li>Go to <strong>Settings → Account</strong></li>
+                    <li>Tap <strong>Delete Account</strong></li>
+                    <li>Confirm deletion</li>
+                </ol>
+                <p>This immediately deletes all your data without needing to fill out this form.</p>
+            </div>
+
+            <h3>Web-Based Deletion Request</h3>
+            <p>If you've uninstalled the app and cannot access it, use this form to request data deletion. We will process your request within <strong>48 hours</strong> as required by DPDP Act.</p>
+
+            <div class="form-container">
+                <form id="deletionForm" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color: #dc2626;">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="your.email@example.com"
+                            aria-required="true"
+                        >
+                        <p class="help-text">Enter the email address associated with your MARK account (Google Sign-In email).</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Deletion (Optional)</label>
+                        <textarea 
+                            id="reason" 
+                            name="reason" 
+                            placeholder="Please let us know why you're deleting your account (helps us improve)"
+                        ></textarea>
+                        <p class="help-text">Optional: Your feedback helps us improve MARK.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalInfo">Additional Information (Optional)</label>
+                        <textarea 
+                            id="additionalInfo" 
+                            name="additionalInfo" 
+                            placeholder="Any specific data concerns or requests?"
+                        ></textarea>
+                        <p class="help-text">Optional: Mention any specific data deletion concerns.</p>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                id="confirmUnderstand" 
+                                name="confirmUnderstand" 
+                                required
+                                aria-required="true"
+                            >
+                            <span>I understand that this action is <strong>irreversible</strong> and all my data will be permanently deleted.</span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                id="confirmOwner" 
+                                name="confirmOwner" 
+                                required
+                                aria-required="true"
+                            >
+                            <span>I confirm that I am the owner of the email address provided and have the right to request deletion of this account.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Submit Deletion Request
+                    </button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <h3>✅ Request Submitted Successfully</h3>
+                    <p>Your data deletion request has been received. You will receive a confirmation email shortly.</p>
+                    <p><strong>Next Steps:</strong></p>
+                    <ul>
+                        <li>Check your email (including spam folder) for confirmation</li>
+                        <li>We will process your request within 48 hours</li>
+                        <li>You'll receive a final confirmation once deletion is complete</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alternative-methods">
+                <h3>Alternative Contact Methods</h3>
+                <p>You can also request data deletion by emailing us directly:</p>
+                <p><strong>Email:</strong> <a href="mailto:dattatechom@gmail.com?subject=Data Deletion Request - MARK&body=Please delete my MARK account and all associated data.%0D%0A%0D%0AEmail: [Your registered email]%0D%0AReason (optional): [Your reason]">dattatechom@gmail.com</a></p>
+                <p><strong>Subject:</strong> "Data Deletion Request - MARK"</p>
+                <p><strong>Include:</strong></p>
+                <ul>
+                    <li>Your registered email address</li>
+                    <li>Request for account and data deletion</li>
+                    <li>Confirmation that you understand the action is irreversible</li>
+                </ul>
+                <p><strong>Response Time:</strong> Within 48 hours (as per DPDP Act 2023)</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>What Happens After Deletion?</h2>
+            
+            <h3>Immediate Actions (Within 48 Hours)</h3>
+            <ol>
+                <li><strong>Email Verification:</strong> We'll send a verification email to confirm it's really you</li>
+                <li><strong>Account Deactivation:</strong> Your account will be temporarily deactivated</li>
+                <li><strong>Data Deletion:</strong> All data will be permanently deleted from:
+                    <ul>
+                        <li>Firebase Authentication database</li>
+                        <li>Your device's local database (if app is still installed)</li>
+                        <li>Your Google Drive backup (if enabled)</li>
+                        <li>FCM notification tokens</li>
+                    </ul>
+                </li>
+                <li><strong>Confirmation Email:</strong> You'll receive final confirmation once deletion is complete</li>
+            </ol>
+
+            <h3>Exceptions (Legal Requirements)</h3>
+            <p>In rare cases, we may be legally required to retain minimal data for:</p>
+            <ul>
+                <li>Ongoing legal proceedings or court orders</li>
+                <li>Tax compliance (if requested by Indian tax authorities)</li>
+                <li>Law enforcement investigations</li>
+            </ul>
+            <p>If any exceptions apply, we will notify you and explain the legal basis.</p>
+
+            <h3>After Deletion</h3>
+            <ul>
+                <li>You will no longer be able to log into MARK with your email</li>
+                <li>All your expense data will be gone (no recovery possible)</li>
+                <li>You can create a new account anytime with the same email</li>
+                <li>New account will start fresh with no previous data</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>How long does deletion take?</h3>
+            <p>We process all deletion requests within <strong>48 hours</strong> as required by India's DPDP Act 2023. You'll receive confirmation via email once complete.</p>
+
+            <h3>Can I recover my data after deletion?</h3>
+            <p>No. Data deletion is <strong>permanent and irreversible</strong>. Make sure to export your data (CSV) before deleting if you want to keep records.</p>
+
+            <h3>What if I exported my data as CSV?</h3>
+            <p>CSV exports are stored on your device or cloud storage of your choice. These files are not affected by account deletion - you remain responsible for managing or deleting them.</p>
+
+            <h3>Will my Google account be deleted?</h3>
+            <p>No. Only your MARK app account will be deleted. Your Google account (used for Sign-In) remains unaffected.</p>
+
+            <h3>What about Google Drive backup?</h3>
+            <p>If you enabled Google Drive backup, we will delete the MARK backup folder from your Drive. You can also manually delete it yourself from Google Drive.</p>
+
+            <h3>Can I delete specific data instead of everything?</h3>
+            <p>Currently, we only support complete account deletion. If you want to delete specific transactions, use the app's delete function for individual items.</p>
+
+            <h3>What if I change my mind after submitting?</h3>
+            <p>Contact us immediately at <a href="mailto:dattatechom@gmail.com">dattatechom@gmail.com</a> with "CANCEL DELETION REQUEST" in the subject line. We can cancel if the deletion hasn't been processed yet.</p>
+
+            <h3>Do I need to uninstall the app?</h3>
+            <p>No, but we recommend uninstalling the app after receiving deletion confirmation to ensure no local data remains on your device.</p>
+        </section>
+
+        <section>
+            <h2>Your Rights Under DPDP Act 2023</h2>
+            <p>India's Digital Personal Data Protection Act gives you the following rights:</p>
+            <ul>
+                <li><strong>Right to Access:</strong> Request a copy of your data (Settings → Export Data)</li>
+                <li><strong>Right to Correction:</strong> Edit inaccurate data in the app</li>
+                <li><strong>Right to Erasure:</strong> Delete your account and data (this page)</li>
+                <li><strong>Right to Data Portability:</strong> Export data in CSV format</li>
+                <li><strong>Right to Withdraw Consent:</strong> Disable features or delete account</li>
+                <li><strong>Right to Grievance Redressal:</strong> File complaints with us or Data Protection Board of India</li>
+            </ul>
+            <p>For more information, see our <a href="index.html">Privacy Policy</a>.</p>
+        </section>
+
+        <section>
+            <h2>Need Help?</h2>
+            <p>If you have questions about data deletion or your privacy rights, contact us:</p>
+            <p><strong>Grievance Redressal Officer:</strong> Chinmoy Dutta<br>
+            <strong>Email:</strong> <a href="mailto:dattatechom@gmail.com">dattatechom@gmail.com</a><br>
+            <strong>Response Time:</strong> Within 48 hours</p>
+        </section>
+
+        <footer>
+            <p><strong>MARK - Money App Re-invented, Kinda</strong></p>
+            <p>Developed by <strong>Chinmoy Dutta</strong></p>
+            <p>Email: <a href="mailto:dattatechom@gmail.com">dattatechom@gmail.com</a></p>
+            <p>&copy; 2026 Chinmoy Dutta. All rights reserved.</p>
+            <p><a href="index.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="delete-data.html">Delete My Data</a></p>
+        </footer>
+    </main>
+
+    <script>
+        // Form submission handler
+        document.getElementById('deletionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const reason = document.getElementById('reason').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+            const confirmUnderstand = document.getElementById('confirmUnderstand').checked;
+            const confirmOwner = document.getElementById('confirmOwner').checked;
+
+            // Validate checkboxes
+            if (!confirmUnderstand || !confirmOwner) {
+                alert('Please confirm both checkboxes before submitting.');
+                return;
+            }
+
+            // Construct email body
+            const subject = 'Data Deletion Request - MARK';
+            const body = `Data Deletion Request
+            
+Email: ${email}
+
+Reason for Deletion:
+${reason || 'Not provided'}
+
+Additional Information:
+${additionalInfo || 'Not provided'}
+
+Confirmations:
+✓ I understand this action is irreversible
+✓ I am the owner of this email address
+
+---
+Submitted via MARK Data Deletion Form
+Timestamp: ${new Date().toISOString()}
+`;
+
+            // Open email client with pre-filled content
+            const mailtoLink = `mailto:dattatechom@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+
+            // Show success message
+            document.getElementById('deletionForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Enable/disable submit button based on checkboxes
+        const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+        const submitBtn = document.getElementById('submitBtn');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                submitBtn.disabled = !allChecked;
+            });
+        });
+
+        // Initial state
+        submitBtn.disabled = true;
+    </script>
+</body>
+</html>
