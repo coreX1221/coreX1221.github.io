@@ -106,9 +106,9 @@
                 <li><strong>Online Mode (Opt-in):</strong>
                     <ul>
                         <li>Audio sent to Google Gemini API via Firebase Cloud Function</li>
-                        <li>Processed on Google's servers (located in United States)</li>
+                        <li>Processed on Google's servers in Asia region (Mumbai/Delhi/Singapore)</li>
                         <li>Deleted immediately after API response (typically within 1-2 seconds)</li>
-                        <li><strong>Data Transfer Notice:</strong> Your voice data is temporarily transferred outside India to Google's servers for transcription</li>
+                        <li><strong>Data Locality:</strong> Your voice data is processed in India or nearby Asian data centers, never leaving the region</li>
                     </ul>
                 </li>
             </ul>
@@ -249,8 +249,8 @@
             <h3>Data Location</h3>
             <ul>
                 <li><strong>Financial Data:</strong> Your device (and optionally, your Google Drive)</li>
-                <li><strong>Authentication:</strong> Firebase servers (multi-region, including India)</li>
-                <li><strong>Voice Processing (Online Mode):</strong> Temporarily on Google Gemini servers (United States)</li>
+                <li><strong>Authentication:</strong> Firebase servers (Asia-South1 region - Mumbai, India)</li>
+                <li><strong>Voice Processing (Online Mode):</strong> Google Gemini servers in Asia region (Mumbai/Delhi/Singapore)</li>
                 <li><strong>Cloud Functions:</strong> Firebase Cloud Functions (Asia-South1 / Mumbai region)</li>
             </ul>
 
@@ -267,6 +267,7 @@
                         <th>Service</th>
                         <th>Purpose</th>
                         <th>Data Shared</th>
+                        <th>Location</th>
                         <th>Privacy Policy</th>
                     </tr>
                 </thead>
@@ -275,48 +276,55 @@
                         <td><strong>Firebase Authentication</strong></td>
                         <td>User authentication</td>
                         <td>Email, name, photo, UID</td>
+                        <td>Asia-South1 (Mumbai)</td>
                         <td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Google Gemini API</strong></td>
                         <td>Voice transcription (online mode)</td>
                         <td>Audio recordings (temporary)</td>
+                        <td>Asia region (Mumbai/Singapore)</td>
                         <td><a href="https://policies.google.com/privacy" target="_blank">Google Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Google Drive API</strong></td>
                         <td>Optional backup</td>
                         <td>Financial data (user-controlled)</td>
+                        <td>User's Google account region</td>
                         <td><a href="https://policies.google.com/privacy" target="_blank">Google Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Google AdMob</strong></td>
                         <td>Rewarded video ads</td>
                         <td>Ad ID, IP address, interactions</td>
+                        <td>Multi-region (optimized for Asia)</td>
                         <td><a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Firebase Messaging</strong></td>
                         <td>Push notifications</td>
                         <td>FCM token, device info</td>
+                        <td>Asia-South1 (Mumbai)</td>
                         <td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Firebase Cloud Functions</strong></td>
                         <td>API proxy (no data storage)</td>
                         <td>Request data (not stored)</td>
+                        <td>Asia-South1 (Mumbai)</td>
                         <td><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
                     </tr>
                     <tr>
                         <td><strong>Google Sign-In</strong></td>
                         <td>OAuth authentication</td>
                         <td>Email, name, photo</td>
+                        <td>Asia-South1 (Mumbai)</td>
                         <td><a href="https://policies.google.com/privacy" target="_blank">Google Privacy</a></td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Data Transfer Notice:</strong> When using online voice transcription, your audio data is temporarily transferred to Google's servers located outside India (United States). This transfer is necessary to provide high-accuracy voice transcription. You can opt for offline mode to process all voice data locally on your device.</p>
+            <p><strong>Data Locality for Indian Users:</strong> For users in India, all voice transcription using online mode is processed in Google's Asia region data centers (Mumbai, Delhi, or Singapore). Your audio data does not leave Asia, ensuring compliance with data residency preferences. You can still opt for offline mode to process all voice data entirely on your device without any network transfer.</p>
 
             <p><strong>We are not responsible</strong> for the privacy practices of third-party services. Please review their privacy policies independently.</p>
         </section>
@@ -501,13 +509,15 @@
             </ul>
 
             <h3>Data Transfers</h3>
-            <p>Your data may be transferred to and processed in countries outside your country of residence:</p>
+            <p>Your data processing locations depend on your geographic location and selected features:</p>
             <ul>
-                <li><strong>Firebase Services:</strong> Multi-region infrastructure (includes US, Europe, Asia)</li>
-                <li><strong>Google Gemini (Online Mode):</strong> United States</li>
-                <li><strong>Your Google Drive:</strong> Depends on your Google account settings</li>
+                <li><strong>Indian Users:</strong> All data processed in India (Mumbai) or nearby Asian data centers (Delhi, Singapore)</li>
+                <li><strong>Firebase Services:</strong> Asia-South1 region (Mumbai, India) for authentication, messaging, and cloud functions</li>
+                <li><strong>Google Gemini (Online Mode):</strong> Asia region (Mumbai/Singapore) for Indian users; regional processing for international users</li>
+                <li><strong>Your Google Drive:</strong> Depends on your Google account settings (typically your account's home region)</li>
             </ul>
-            <p>These transfers are necessary to provide the services. By using MARK, you consent to these transfers.</p>
+            <p><strong>No Trans-Border Data Transfers for Indian Users:</strong> If you are located in India and use online voice features, your audio data is processed entirely within Asia. We do not transfer Indian user data to US or European servers.</p>
+            <p>These regional processing arrangements ensure faster performance and data residency compliance. By using MARK, you consent to these processing locations.</p>
         </section>
 
         <section id="changes">
