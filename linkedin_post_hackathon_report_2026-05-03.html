@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerRank Orchestrate Hackathon — LinkedIn Post Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.7; }
+        .container { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; background: #fff; border-right: 1px solid #e2e8f0; position: fixed; height: 100vh; overflow-y: auto; padding: 2rem 1.5rem; }
+        .sidebar h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; margin-bottom: 1rem; }
+        .sidebar nav a { display: block; padding: 0.5rem 0.75rem; color: #334155; text-decoration: none; border-radius: 6px; margin-bottom: 0.25rem; font-size: 0.9rem; transition: all 0.15s; }
+        .sidebar nav a:hover { background: #f1f5f9; color: #0f172a; }
+        .sidebar nav a.active { background: #e0e7ff; color: #3730a3; font-weight: 600; }
+        .sidebar .logo { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid #e2e8f0; }
+        .main { margin-left: 280px; flex: 1; padding: 2.5rem 3rem; max-width: 900px; }
+        .header { background: #fff; color: #0f172a; padding: 2.5rem; border-radius: 12px; margin-bottom: 2.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04); }
+        .header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .header p { opacity: 0.9; font-size: 0.95rem; }
+        .meta { display: flex; gap: 2rem; margin-top: 1rem; font-size: 0.85rem; opacity: 0.85; }
+        .meta span { display: flex; align-items: center; gap: 0.4rem; }
+        section { margin-bottom: 3rem; }
+        h2 { font-size: 1.4rem; color: #0f172a; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+        h3 { font-size: 1.1rem; color: #334155; margin: 1.5rem 0 0.75rem; }
+        p { margin-bottom: 1rem; color: #475569; }
+        .card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 1px solid #bae6fd; border-radius: 8px; padding: 1.25rem; text-align: center; }
+        .stat-card .number { font-size: 2rem; font-weight: 700; color: #0369a1; }
+        .stat-card .label { font-size: 0.85rem; color: #0c4a6e; margin-top: 0.25rem; }
+        .stat-card.purple { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-color: #c4b5fd; }
+        .stat-card.purple .number { color: #6d28d9; }
+        .stat-card.green { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; }
+        .stat-card.green .number { color: #15803d; }
+        .stat-card.amber { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-color: #fcd34d; }
+        .stat-card.amber .number { color: #b45309; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f8fafc; font-weight: 600; color: #0f172a; }
+        tr:hover { background: #f8fafc; }
+        code { font-family: 'SF Mono', 'Fira Code', monospace; background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; color: #334155; }
+        pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; font-size: 0.85rem; line-height: 1.6; }
+        pre code { background: none; padding: 0; color: inherit; }
+        pre .keyword { color: #c084fc; }
+        pre .string { color: #86efac; }
+        pre .comment { color: #64748b; }
+        pre .number { color: #fbbf24; }
+        .mermaid-container { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; }
+        .mermaid-container .mermaid { display: flex; justify-content: center; }
+        ul, ol { margin: 0.75rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; color: #475569; }
+        li strong { color: #0f172a; }
+        .tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .tag.green { background: #dcfce7; color: #15803d; }
+        .tag.amber { background: #fef3c7; color: #b45309; }
+        .tag.red { background: #fee2e2; color: #dc2626; }
+        .callout { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+        .callout.warning { background: #fefce8; border-color: #eab308; }
+        .callout.success { background: #f0fdf4; border-color: #22c55e; }
+        .callout p { margin: 0; color: #1e40af; }
+        .callout.warning p { color: #854d0e; }
+        .callout.success p { color: #166534; }
+        .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; text-align: center; color: #94a3b8; font-size: 0.85rem; }
+        .hashtags { margin-top: 1rem; }
+        .hashtags span { display: inline-block; color: #6366f1; font-weight: 500; margin: 0.25rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">🚀 Hackathon Report</div>
+            <h3>Navigation</h3>
+            <nav>
+                <a href="#summary">Executive Summary</a>
+                <a href="#rag">RAG Architecture</a>
+                <a href="#retrieval">Retrieval Pipeline</a>
+                <a href="#fallback">Fallback Strategy</a>
+                <a href="#llm">LLM Integration</a>
+                <a href="#pipeline">3-Pass Pipeline</a>
+                <a href="#tui">TUI / UX</a>
+                <a href="#results">Results Dashboard</a>
+                <a href="#escalation">Escalation Classes</a>
+                <a href="#confidence">Confidence Scoring</a>
+                <a href="#tech">Tech Stack</a>
+                <a href="#transparency">Transparency</a>
+                <a href="#takeaway">Key Takeaway</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <div class="header">
+                <h1>Building a Terminal-Based AI Support Triage Agent</h1>
+                <p>What we achieved in 24 hours at HackerRank Orchestrate</p>
+                <div class="meta">
+                    <span>📅 May 1–2, 2026</span>
+                    <span>⏱️ 24-hour hackathon</span>
+                    <span>🏆 HackerRank Orchestrate</span>
+                </div>
+            </div>
+
+            <section id="summary">
+                <h2>Executive Summary</h2>
+                <p>We built a production-grade AI agent that triages real support tickets across three product ecosystems — <strong>HackerRank</strong>, <strong>Claude</strong>, and <strong>Visa</strong> — entirely from the terminal. No heavy frameworks. No external vector databases. Pure Python with custom-built retrieval, fallback chains, and a beautiful TUI.</p>
+                
+                <div class="card-grid">
+                    <div class="stat-card">
+                        <div class="number">29</div>
+                        <div class="label">Tickets Processed</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="number">3</div>
+                        <div class="label">Escalated</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="number">26</div>
+                        <div class="label">Replied</div>
+                    </div>
+                    <div class="stat-card amber">
+                        <div class="number">0.7278</div>
+                        <div class="label">Weighted Score</div>
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <p><strong>Key insight:</strong> You don't need heavy frameworks to build reliable RAG systems. Sometimes deterministic + well-designed fallback beats complexity.</p>
+                </div>
+            </section>
+
+            <section id="rag">
+                <h2>RAG Architecture — Zero Frameworks</h2>
+                <p>No LangChain. No LlamaIndex. No external vector stores. We built our retrieval pipeline from scratch in pure Python.</p>
+                
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph TD
+    A[📄 Markdown Corpus] --> B[🔪 Heading-Aware Chunking]
+    B -->|700 chars, 120 overlap| C[📋 Chunk Metadata]
+    C --> D[🔍 BM25 Index]
+    C --> E[🧮 Semantic Hash Index]
+    D --> F[⚡ RRF Fusion k=60]
+    E --> F
+    F --> G[🎯 Domain Filter]
+    G --> H[📊 Ranked Results]
+    H --> I[📦 Top-K Selection]
+    I -->|High C: 4| J[📝 Response Generation]
+    I -->|Medium C: 6| J
+    I -->|Low C: 8| J
+    
+    style A fill:#f0f9ff,stroke:#3b82f6
+    style B fill:#fef3c7,stroke:#eab308
+    style D fill:#dcfce7,stroke:#22c55e
+    style E fill:#ede9fe,stroke:#8b5cf6
+    style F fill:#f0f9ff,stroke:#3b82f6
+    style J fill:#fee2e2,stroke:#ef4444
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Core Components</h3>
+                    <table>
+                        <tr><th>Component</th><th>Implementation</th><th>Key Params</th></tr>
+                        <tr><td><strong>BM25</strong></td><td>Custom Okapi BM25</td><td>k1=1.5, b=0.75</td></tr>
+                        <tr><td><strong>Semantic Proxy</strong></td><td>SHA-256 character trigrams → 512D space</td><td>Deterministic hashing</td></tr>
+                        <tr><td><strong>RRF Fusion</strong></td><td>Reciprocal Rank Fusion</td><td>k=60, equal weights</td></tr>
+                        <tr><td><strong>Chunking</strong></td><td>Heading-aware sliding window</td><td>700 chars, 120 overlap</td></tr>
+                        <tr><td><strong>Cache</strong></td><td>Fingerprinted JSON index</td><td>SHA-256 from paths+mtimes</td></tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="retrieval">
+                <h2>Retrieval Pipeline Deep Dive</h2>
+                <p>The hybrid retrieval system combines lexical and semantic signals for robust document ranking.</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+sequenceDiagram
+    participant T as Ticket Query
+    participant D as Domain Filter
+    participant B as BM25 Engine
+    participant S as Semantic Hash
+    participant R as RRF Fusion
+    participant O as Output
+    
+    T->>D: Parse domain signal
+    D->>D: Keyword classification
+    D->>B: Filtered corpus
+    D->>S: Filtered corpus
+    B->>B: Build DF/IDF indexes
+    B->>R: Lexical rankings
+    S->>S: Trigram → 512D mapping
+    S->>R: Semantic rankings
+    R->>R: score = 1/(k+rank_bm25) + 1/(k+rank_sem)
+    R->>O: Final ranked chunks
+    O->>O: Dynamic top-K selection
+                    </div>
+                </div>
+
+                <div class="callout warning">
+                    <p><strong>Semantic hashing note:</strong> The semantic proxy uses hashed character trigrams mapped to 512D space — not a neural embedding model, but a deterministic scheme that provides meaningful similarity signals without any ML dependencies.</p>
+                </div>
+
+                <pre><code><span class="comment"># RRF Fusion Formula</span>
+<span class="keyword">score</span> = <span class="number">1</span> / (k + rank_bm25) + <span class="number">1</span> / (k + rank_semantic)
+<span class="comment"># where k = 60, weights = [1.0, 1.0]</span>
+
+<span class="comment"># Dynamic context selection</span>
+<span class="keyword">if</span> confidence >= <span class="number">0.75</span>:  top_k = <span class="number">4</span>
+<span class="keyword">elif</span> confidence >= <span class="number">0.55</span>: top_k = <span class="number">6</span>
+<span class="keyword">else</span>:                     top_k = <span class="number">8</span></code></pre>
+            </section>
+
+            <section id="fallback">
+                <h2>Multi-Layer Fallback Strategy</h2>
+                <p>Reliability was non-negotiable. Our system implements five layers of fallback to ensure every ticket is processed correctly.</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph TD
+    A[Ticket Arrives] --> B{LLM Enabled?}
+    B -->|No| C[⚙️ Deterministic Mode]
+    B -->|Yes| D[🤖 Gemini API Call]
+    D --> E{Circuit Breaker}
+    E -->|Open| C
+    E -->|Closed| F[API Request]
+    F --> G{Success?}
+    G -->|No| H[Retry with Backoff]
+    H --> I{3 Failures?}
+    I -->|Yes| J[Open Circuit 60s]
+    J --> C
+    I -->|No| F
+    G -->|Yes| K[JSON Validation]
+    K --> L{Schema Valid?}
+    L -->|No| M[Fail-Closed]
+    M --> C
+    L -->|Yes| N[Chunk ID Sanitization]
+    N --> O{IDs Valid?}
+    O -->|No| C
+    O -->|Yes| P[Use LLM Output]
+    
+    C --> Q[A/B Calibration Gate]
+    P --> Q
+    Q --> R{Measurable Gain?}
+    R -->|No| S[✅ Stay Deterministic]
+    R -->|Yes| T{Safe?}
+    T -->|No| S
+    T -->|Yes| U[✅ Enable Gemini]
+    
+    style C fill:#dcfce7,stroke:#22c55e
+    style S fill:#dcfce7,stroke:#22c55e
+    style U fill:#dcfce7,stroke:#22c55e
+    style J fill:#fee2e2,stroke:#ef4444
+    style M fill:#fee2e2,stroke:#ef4444
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Fallback Layers</h3>
+                    <ol>
+                        <li><strong>Deterministic Default</strong> — Entire pipeline runs without any LLM using template-based response assembly</li>
+                        <li><strong>Circuit Breaker</strong> — Opens after 3 consecutive failures, 60-second cooldown</li>
+                        <li><strong>Bounded Retries</strong> — Up to 2 retries with exponential backoff (base 0.35s) + 8s timeout</li>
+                        <li><strong>Validation Gate</strong> — Strict JSON schema validation with denylist/allowlist checks</li>
+                        <li><strong>A/B Calibration</strong> — Gemini only enabled if measurable gain + zero safety regression</li>
+                    </ol>
+                </div>
+
+                <div class="callout success">
+                    <p><strong>Result:</strong> After A/B calibration, the system chose deterministic mode (threshold: 0.66, weighted score: 0.7278). No measurable gain from Gemini on this dataset.</p>
+                </div>
+            </section>
+
+            <section id="llm">
+                <h2>LLM Integration</h2>
+                <p>When enabled, Google Gemini 2.5 Flash Lite handles response and justification drafting — never routing or safety decisions.</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph LR
+    A[Ticket + Context] --> B[GeminiAdapter]
+    B --> C[REST API Call]
+    C --> D{Response}
+    D -->|Success| E[JSON Parse]
+    D -->|Error| F[Circuit Breaker]
+    E --> G[Schema Validation]
+    G --> H[Denylist Check]
+    H --> I[Allowlist Check]
+    I --> J[Chunk ID Sanitization]
+    J --> K[Final Output]
+    
+    B -.->|8s timeout| C
+    B -.->|Max 2 retries| C
+    B -.->|Exp backoff| C
+    
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style K fill:#dcfce7,stroke:#22c55e
+    style F fill:#fee2e2,stroke:#ef4444
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Gemini Configuration</h3>
+                    <table>
+                        <tr><th>Parameter</th><th>Value</th></tr>
+                        <tr><td>Model</td><td><code>gemini-2.5-flash-lite</code></td></tr>
+                        <tr><td>API</td><td>Google Generative Language API v1beta</td></tr>
+                        <tr><td>Temperature</td><td><code>0.0</code> (deterministic)</td></tr>
+                        <tr><td>TopK / TopP</td><td><code>1</code> / <code>1.0</code></td></tr>
+                        <tr><td>Max output tokens</td><td><code>1024</code></td></tr>
+                        <tr><td>MIME type</td><td><code>application/json</code></td></tr>
+                        <tr><td>SDK</td><td><strong>None</strong> — pure urllib REST adapter</td></tr>
+                    </table>
+                </div>
+
+                <pre><code><span class="comment"># Gemini response schema</span>
+{
+  <span class="string">"response_text"</span>: <span class="string">"..."</span>,
+  <span class="string">"justification_text"</span>: <span class="string">"..."</span>,
+  <span class="string">"used_chunk_ids"</span>: [<span class="string">"chunk_1"</span>, <span class="string">"chunk_3"</span>],
+  <span class="string">"unsupported_claim_detected"</span>: <span class="keyword">false</span>
+}</code></pre>
+            </section>
+
+            <section id="pipeline">
+                <h2>3-Pass Pipeline Architecture</h2>
+                <p>The system follows a three-pass architecture with safety audit and reconciliation.</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph TD
+    subgraph "Pass A: Primary Inference"
+        A1[Ticket Input] --> A2[🛡️ Safety Gate]
+        A2 -->|7 hard rules| A3[Escalation Flag]
+        A2 --> A4[🌐 Domain Resolution]
+        A4 --> A5[🔍 Corpus Retrieval]
+        A5 --> A6[📍 Product Area Classification]
+        A6 --> A7[📊 Confidence Computation]
+        A7 --> A8[📝 Response Generation]
+        A8 --> A9[🎯 Status Decision]
+    end
+    
+    subgraph "Pass B: Safety/Audit"
+        B1[Check unsupported claims] --> B2[Verify grounding]
+        B2 --> B3[Validate confidence]
+        B3 --> B4{Unsafe?}
+        B4 -->|Yes| B5[Force Escalation]
+        B4 -->|No| C1
+        B5 --> C1
+    end
+    
+    subgraph "Pass C: Consistency"
+        C1[Schema Validation] --> C2[Normalize Fields]
+        C2 --> C3[Final Row Output]
+    end
+    
+    A9 --> B1
+    
+    style A2 fill:#fee2e2,stroke:#ef4444
+    style A5 fill:#f0f9ff,stroke:#3b82f6
+    style A8 fill:#ede9fe,stroke:#8b5cf6
+    style B5 fill:#fee2e2,stroke:#ef4444
+    style C3 fill:#dcfce7,stroke:#22c55e
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Composite Confidence Formula</h3>
+                    <pre><code>C = <span class="number">0.40</span> * retrieval_confidence
+  + <span class="number">0.25</span> * domain_confidence
+  + <span class="number">0.20</span> * request_type_confidence
+  + <span class="number">0.15</span> * grounding_confidence</code></pre>
+                    <p>Calibrated threshold: <code>0.66</code> — tickets below this threshold are automatically escalated.</p>
+                </div>
+            </section>
+
+            <section id="tui">
+                <h2>TUI / UX</h2>
+                <p>A beautiful terminal interface built with Textual + Rich, providing real-time feedback and controls.</p>
+
+                <div class="card">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><strong>Live progress bar</strong> — Real-time ticket processing status</li>
+                        <li><strong>Per-ticket status badges</strong> — Visual indicators for replied/escalated/errors</li>
+                        <li><strong>Keyboard shortcuts</strong> — <code>Ctrl+R</code> (run), <code>Ctrl+D</code> (debug), <code>Ctrl+C</code> (calibrate), <code>Ctrl+Q</code> (quit)</li>
+                        <li><strong>Output preview</strong> — Expandable rows with full ticket details</li>
+                        <li><strong>Threaded execution</strong> — Background processing without blocking UI</li>
+                        <li><strong>Multiple modes</strong> — Inference, debug, and calibration modes</li>
+                    </ul>
+                </div>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph LR
+    A[Terminal] --> B[Textual Framework]
+    B --> C[Rich Rendering]
+    C --> D[Progress Bar]
+    C --> E[Status Badges]
+    C --> F[Expandable Rows]
+    C --> G[Keyboard Controls]
+    
+    B --> H[Thread Pool]
+    H --> I[Pipeline Engine]
+    I --> J[Output CSV]
+    
+    style A fill:#f8fafc,stroke:#64748b
+    style B fill:#ede9fe,stroke:#8b5cf6
+    style J fill:#dcfce7,stroke:#22c55e
+                    </div>
+                </div>
+            </section>
+
+            <section id="results">
+                <h2>Results Dashboard</h2>
+                
+                <div class="card-grid">
+                    <div class="stat-card">
+                        <div class="number">29</div>
+                        <div class="label">Total Tickets</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="number">26</div>
+                        <div class="label">Replied</div>
+                    </div>
+                    <div class="stat-card amber">
+                        <div class="number">3</div>
+                        <div class="label">Escalated</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="number">7</div>
+                        <div class="label">Escalation Classes</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Output Schema</h3>
+                    <table>
+                        <tr><th>Column</th><th>Allowed Values</th><th>Description</th></tr>
+                        <tr><td><code>status</code></td><td><code>replied</code>, <code>escalated</code></td><td>Ticket disposition</td></tr>
+                        <tr><td><code>product_area</code></td><td>Domain taxonomy</td><td>e.g., screen, billing, travel_support</td></tr>
+                        <tr><td><code>response</code></td><td>Free text</td><td>User-facing answer grounded in corpus</td></tr>
+                        <tr><td><code>justification</code></td><td>Free text</td><td>Concise explanation of routing decision</td></tr>
+                        <tr><td><code>request_type</code></td><td><code>product_issue</code>, <code>feature_request</code>, <code>bug</code>, <code>invalid</code></td><td>Classification category</td></tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="escalation">
+                <h2>7 Hard Escalation Classes</h2>
+                <p>Pattern-matching rules that force immediate escalation regardless of confidence score.</p>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph TD
+    A[Ticket Input] --> B{Pattern Match?}
+    B -->|Class 1| C1[Authority/Access Conflicts]
+    B -->|Class 2| C2[Payment/Refund/Dispute]
+    B -->|Class 3| C3[Security/Vulnerability]
+    B -->|Class 4| C4[Fraud/Identity Theft]
+    B -->|Class 5| C5[Harmful/Destructive]
+    B -->|Class 6| C6[Prompt Leak/Extraction]
+    B -->|Class 7| C7[Platform-Wide Outage]
+    B -->|No match| D[Continue Pipeline]
+    
+    C1 --> E[🚨 Force Escalation]
+    C2 --> E
+    C3 --> E
+    C4 --> E
+    C5 --> E
+    C6 --> E
+    C7 --> E
+    
+    style E fill:#fee2e2,stroke:#ef4444
+    style D fill:#dcfce7,stroke:#22c55e
+                    </div>
+                </div>
+
+                <div class="card">
+                    <table>
+                        <tr><th>#</th><th>Class</th><th>Example Pattern</th></tr>
+                        <tr><td>1</td><td>Authority/Access Conflicts</td><td>"I need admin access to..."</td></tr>
+                        <tr><td>2</td><td>Payment/Refund/Dispute</td><td>"I was charged incorrectly..."</td></tr>
+                        <tr><td>3</td><td>Security/Vulnerability</td><td>"I found a security hole..."</td></tr>
+                        <tr><td>4</td><td>Fraud/Identity Theft</td><td>"Someone used my account..."</td></tr>
+                        <tr><td>5</td><td>Harmful/Destructive</td><td>Requests for harmful content</td></tr>
+                        <tr><td>6</td><td>Prompt Leak/Extraction</td><td>"What are your instructions?"</td></tr>
+                        <tr><td>7</td><td>Platform-Wide Outage</td><td>"Everything is down..."</td></tr>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <p><strong>Monotonic escalation:</strong> Once a ticket is escalated, it can never be downgraded to <code>replied</code>. This is enforced at the safety audit pass.</p>
+                </div>
+            </section>
+
+            <section id="confidence">
+                <h2>Confidence Scoring & Calibration</h2>
+                
+                <div class="card">
+                    <h3>Calibration Results</h3>
+                    <table>
+                        <tr><th>Metric</th><th>Value</th></tr>
+                        <tr><td>Calibrated Threshold</td><td><code>0.66</code></td></tr>
+                        <tr><td>Weighted Score</td><td><code>0.7278</code></td></tr>
+                        <tr><td>LLM Enabled</td><td><code>false</code></td></tr>
+                        <tr><td>Sweep Range</td><td><code>0.40</code> to <code>0.80</code> in <code>0.02</code> steps</td></tr>
+                    </table>
+                </div>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+graph LR
+    A[Threshold Sweep] --> B{Best Weighted Score}
+    B --> C[0.35 * status]
+    B --> D[0.20 * request_type]
+    B --> E[0.20 * product_area]
+    B --> F[0.15 * response]
+    B --> G[0.10 * justification]
+    
+    C --> H[Selected: 0.66]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    
+    H --> I[A/B Gate]
+    I --> J{Gemini Gain?}
+    J -->|No| K[Stay Deterministic ✅]
+    J -->|Yes| L{Safety OK?}
+    L -->|No| K
+    L -->|Yes| M[Enable Gemini]
+    
+    style H fill:#e0e7ff,stroke:#3730a3
+    style K fill:#dcfce7,stroke:#22c55e
+                    </div>
+                </div>
+            </section>
+
+            <section id="tech">
+                <h2>Tech Stack</h2>
+                
+                <div class="card">
+                    <table>
+                        <tr><th>Concern</th><th>Technology</th></tr>
+                        <tr><td>Language</td><td>Python 3.10+</td></tr>
+                        <tr><td>TUI Framework</td><td>Textual + Rich</td></tr>
+                        <tr><td>Retrieval</td><td>Custom BM25 + Hashed trigram embeddings + RRF fusion</td></tr>
+                        <tr><td>LLM</td><td>Google Gemini 2.5 Flash Lite (REST API, no SDK)</td></tr>
+                        <tr><td>Vector Store</td><td>In-memory (no external DB)</td></tr>
+                        <tr><td>Config</td><td>Python dataclasses with layered config precedence</td></tr>
+                        <tr><td>Persistence</td><td>JSON-based fingerprinted cache</td></tr>
+                        <tr><td>Networking</td><td>Standard library urllib only</td></tr>
+                        <tr><td>Concurrency</td><td>threading for TUI background execution</td></tr>
+                    </table>
+                </div>
+
+                <h3>What We <strong>Didn't</strong> Use</h3>
+                <div style="margin: 1rem 0;">
+                    <span class="tag red">No LangChain</span>
+                    <span class="tag red">No LlamaIndex</span>
+                    <span class="tag red">No sklearn</span>
+                    <span class="tag red">No sentence-transformers</span>
+                    <span class="tag red">No external vector DB</span>
+                    <span class="tag red">No LLM SDK</span>
+                </div>
+            </section>
+
+            <section id="transparency">
+                <h2>Transparency & Learnings</h2>
+                
+                <div class="callout warning">
+                    <p><strong>Bug disclosure:</strong> A bug in the pipeline resulted in all reports being incorrectly marked as <code>escalated</code>. This means our submission likely won't place — but we're owning it transparently.</p>
+                </div>
+
+                <div class="card">
+                    <h3>What We Could Have Done More</h3>
+                    <p>With more time, we could have improved the architecture significantly — added better chunking strategies, integrated real embedding models, expanded the escalation taxonomy, and refined the confidence calibration. But within a 24-hour constraint, we shipped what we could and are proud of that.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Learning > Winning</h3>
+                    <p>The experience, the late-night debugging sessions, the deep dive into building RAG systems from scratch, and understanding the tradeoffs between deterministic and LLM-driven pipelines — that learning counts far more than any ranking on a leaderboard.</p>
+                </div>
+
+                <div class="card">
+                    <h3>How This Was Built</h3>
+                    <p>Most of the implementation code was written by AI agents — <strong>Codex</strong> and <strong>OpenCode</strong>. Our team's focus was on:</p>
+                    <ul>
+                        <li><strong>Agent orchestration</strong> — coordinating multiple AI agents effectively</li>
+                        <li><strong>Architecture design</strong> — making high-level engineering decisions about pipeline structure, fallback strategies, and safety gates</li>
+                        <li><strong>Review and iteration</strong> — validating outputs, catching edge cases, and steering the agents toward correct implementations</li>
+                    </ul>
+                    <p>This is what modern AI-assisted development looks like. The human role shifts from writing every line of code to orchestrating, architecting, and quality-assuring.</p>
+                </div>
+            </section>
+
+            <section id="takeaway">
+                <h2>Key Takeaway</h2>
+                
+                <div class="callout success">
+                    <p><strong>You don't need heavy frameworks to build reliable RAG systems.</strong> Sometimes deterministic + well-designed fallback beats complexity. We built a production-grade support triage agent in 24 hours with pure Python, custom retrieval, and multi-layer fallback — achieving a 0.7278 weighted score across 29 tickets.</p>
+                </div>
+            </section>
+
+            <div class="footer">
+                <p>Generated on May 3, 2026 | HackerRank Orchestrate Hackathon Report</p>
+                <div class="hashtags">
+                    <span>#HackerRank</span>
+                    <span>#Hackathon</span>
+                    <span>#RAG</span>
+                    <span>#LLM</span>
+                    <span>#AI</span>
+                    <span>#Python</span>
+                    <span>#TerminalUI</span>
+                    <span>#Gemini</span>
+                    <span>#Engineering</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#e0e7ff',
+                primaryTextColor: '#1e1b4b',
+                primaryBorderColor: '#6366f1',
+                lineColor: '#64748b',
+                secondaryColor: '#f0f9ff',
+                tertiaryColor: '#f8fafc',
+                fontSize: '14px'
+            },
+            flowchart: {
+                curve: 'basis',
+                padding: 15
+            }
+        });
+
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.sidebar nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.sidebar nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
